@@ -43,6 +43,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+A. Closure refers to the abilitly a function has to access varibles outside of it's function scope. Such as defining a varible globally and having a function return the varible's vlaue even though it's not defined in the function.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -64,8 +67,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+A.The function is taking a globally declared varible and using it within it's code, so there for it is using closure. You can tell because is is outside of the "gates" of the declared function. 
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+A. When calling `dansRoll` multiple times the name will stay the same but the dice roll outcome will change.
+
 c. What is the lexical scope of `newRoll`? 
+
+A. `newRoll` is defined within the function so there for it is a local scope. It can only be used within the function.
 
 
 ### Task 3 - Stretch Goals

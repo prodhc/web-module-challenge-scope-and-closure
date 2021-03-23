@@ -29,10 +29,16 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   
   1. What is the difference between counter1 and counter2?
   
+A. Counter1 has a varible that's declared in the function but counter2 has it delcared outside of it.
+
   2. Which of the two uses a closure? How can you tell?
-  
+
+A. Counter2 uses closure because it doesn't have the varible declared inside the function so it looks outwords to find the varible to use.
+
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+A. Counter1 is best used if the declared varible doesn't need to be accsess outside of the function, but if you wanted to use the same varible elsewhere you would need to declare it globally like counter2.
 */
 
 // counter1 code
