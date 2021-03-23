@@ -62,9 +62,10 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
-}
+function inning(){
+  return Math.floor(Math.random() * Math.floor(3));
+};
+console.log(inning());
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -81,17 +82,28 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(callback, num){
+  let home = 0;
+  let away = 0;
+  for(let i = 0; i < num; i++) {
+    home += callback()
+    away += callback()
+  }
+return {"Home":home, "Away":away};
 }
+finalScore(inning, 9);
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(callback) {
+let home = 0;
+let away = 0;
+home += callback();
+away += callback();
+return {"Home":home, "Away":away};
 }
 
 
@@ -136,13 +148,32 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(callback1, _callback2, num) {
+  let scoreArray = [];
+  let home = 0;
+  let away = 0;
+
+  for (let i = 0; i < num; i++) {
+    const currentInning = callback1(_callback2);
+    home += currentInning.Home;
+    away += currentInning.Away;
+    scoreArray.push(`Inning ${i + 1}: Away ${currentInning.Away} - Home ${currentInning.Home}`);
+    if (i + 1 === num && home === away) {
+      scoreArray.push(`This game will require extra innings: Away - ${currentInning.Away} - Home ${currentInning.Home}`);
+      
+    }
+    else if (i + 1 === num && home !== away) {
+      scoreArray.push(`Final Score: Away ${currentInning.Away} - Home ${currentInning.Home}`);
+    }
+  }
+  
+  return scoreArray;
 }
 
-
-
-
+console.log(scoreboard(getInningScore, inning, 9));
+console.log(scoreboard(getInningScore, inning, 9));
+console.log(scoreboard(getInningScore, inning, 8));
+console.log(scoreboard(getInningScore, inning, 20));
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo(){
   //console.log('its working');
